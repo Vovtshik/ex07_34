@@ -18,6 +18,13 @@ using std::setw;
 bool correctness_of_the_course(int [][8], int, int);
 void make_move(int [][8], int, int);
 void make_m_1(int [][8], int, int, int);
+void make_m_2(int [][8], int, int, int);
+void make_m_3(int [][8], int, int, int);
+void make_m_4(int [][8], int, int, int);
+void make_m_5(int [][8], int, int, int);
+void make_m_6(int [][8], int, int, int);
+void make_m_7(int [][8], int, int, int);
+void make_m_8(int [][8], int, int, int);
 void show_board(int [][8], int, int);
 
 int main()
@@ -87,7 +94,9 @@ void make_move(int B[][8], int current_R, int current_C)
    r_temp = current_R;
    c_temp = current_C;
 
-   while(true)
+   make_m_2(B, r_temp, c_temp, filler);
+
+   /*while(true)
    {
       if((c_temp + 1) < 8)
       {
@@ -96,12 +105,14 @@ void make_move(int B[][8], int current_R, int current_C)
       }
       else
          break;
-   }
+   }*/
 
    r_temp = current_R;
    c_temp = current_C;
 
-   while(true)
+   make_m_3(B, r_temp, c_temp, filler);
+
+  /* while(true)
    {
       if((r_temp - 1) >= 0)
       {
@@ -110,12 +121,14 @@ void make_move(int B[][8], int current_R, int current_C)
       }
       else
          break;
-   }
+   }*/
 
    r_temp = current_R;
    c_temp = current_C;
 
-   while(true)
+   make_m_4(B, r_temp, c_temp, filler);
+
+   /*while(true)
    {
       if((r_temp + 1) < 8)
       {
@@ -124,7 +137,7 @@ void make_move(int B[][8], int current_R, int current_C)
       }
       else
          break;
-   }
+   }*/
 
    r_temp = current_R;
    c_temp = current_C;
@@ -199,6 +212,42 @@ void make_m_1(int B[][8], int rT, int cT, int fil)
    }
 }
 
+void make_m_2(int B[][8], int rT, int cT, int fil)
+{
+    if ((cT + 1) >= 8)
+        return;
+    else
+    {
+        cT++;
+        B[rT][cT] = fil;
+        make_m_2(B, rT, cT, fil);
+    }
+}
+
+void make_m_3(int B[][8], int rT, int cT, int fil)
+{
+    if ((rT - 1) < 0)
+        return;
+    else
+    {
+        rT--;
+        B[rT][cT] = fil;
+        make_m_3(B, rT, cT, fil);
+    }
+}
+
+void make_m_4(int B[][8], int rT, int cT, int fil)
+{
+    if ((rT + 1) >= 8)
+        return;
+    else
+    {
+        cT++;
+        B[rT][cT] = fil;
+        make_m_4(B, rT, cT, fil);
+    }
+}
+
 void show_board(int B[][8], int sCR, int sCC)
 {
    cout << "\n      0   1   2   3   4   5   6   7   \n" ;
@@ -210,7 +259,7 @@ void show_board(int B[][8], int sCR, int sCC)
        for (int j = 0; j < 8; j++)
        {
            if (i == sCR && j == sCC)
-               cout << " Q " << "|";
+               cout << " 1 " << "|";
            else if (B[i][j] == 0)
                cout << "   |";
            else    
