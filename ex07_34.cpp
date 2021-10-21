@@ -44,13 +44,13 @@ int main()
       if(correctness_of_the_course(board, move_r, move_c))
       {
          number_move++;
-	 board[move_r][move_c] = number_move;
+	     board[move_r][move_c] = number_move;
          make_move(board, move_r, move_c);
          attempt_counter = 0;
       }
       else
       {
-	 attempt_counter++;
+	     attempt_counter++;
          if(attempt_counter > 100)
             break;
       }
@@ -142,7 +142,9 @@ void make_move(int B[][8], int current_R, int current_C)
    r_temp = current_R;
    c_temp = current_C;
 
-   while(true)
+   make_m_5(B, r_temp, c_temp, filler);
+
+   /*while(true)
    {
       if((r_temp - 1) >= 0 && (c_temp - 1) >= 0)
       {
@@ -152,7 +154,7 @@ void make_move(int B[][8], int current_R, int current_C)
       }
       else
          break;
-   }
+   }*/
    
    r_temp = current_R;
    c_temp = current_C;
@@ -162,11 +164,11 @@ void make_move(int B[][8], int current_R, int current_C)
       if((r_temp + 1) < 8 && (c_temp + 1) < 8)
       {
          r_temp++;
-	 c_temp++;
-	 B[r_temp][c_temp] = filler;
+	     c_temp++;
+	     B[r_temp][c_temp] = filler;
       }
       else
-	 break;
+	    break;
    }
    
    r_temp = current_R;
@@ -177,11 +179,11 @@ void make_move(int B[][8], int current_R, int current_C)
       if((r_temp + 1) < 8 && (c_temp - 1) >= 0)
       {
          r_temp++;
-	 c_temp--;
-	 B[r_temp][c_temp] = filler;
+	     c_temp--;
+	     B[r_temp][c_temp] = filler;
       }
       else
-	 break;
+	    break;
    }
 
    r_temp = current_R;
@@ -193,10 +195,10 @@ void make_move(int B[][8], int current_R, int current_C)
       {
          r_temp--; 
          c_temp++;
-	 B[r_temp][c_temp] = filler;
+	     B[r_temp][c_temp] = filler;
       }
       else
-	 break;   
+	     break;   
    }
 }
 
@@ -242,9 +244,21 @@ void make_m_4(int B[][8], int rT, int cT, int fil)
         return;
     else
     {
-        cT++;
+        rT++;
         B[rT][cT] = fil;
         make_m_4(B, rT, cT, fil);
+    }
+}
+
+void make_m_5(int B[][8], int rT, int cT, int fil)
+{
+    if ((rT - 1) < 0)
+        return;
+    else
+    {
+        rT--;
+        B[rT][cT] = fil;
+        make_m_5(B, rT, cT, fil);
     }
 }
 
