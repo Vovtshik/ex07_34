@@ -24,7 +24,7 @@ void make_m_4(int [][8], int, int, int);
 void make_m_5(int [][8], int, int, int);
 void make_m_6(int [][8], int, int, int);
 void make_m_7(int [][8], int, int, int);
-//void make_m_8(int [][8], int, int, int);
+void make_m_8(int [][8], int, int, int);
 void show_board(int [][8]/*, int, int*/);
 
 int main()
@@ -195,7 +195,7 @@ void make_move(int B[][8], int current_R, int current_C)
    r_temp = current_R;
    c_temp = current_C;
 
-   while(true)
+   /*while(true)
    {
       if((r_temp - 1) >= 0 && (c_temp + 1) < 8)
       {
@@ -205,7 +205,9 @@ void make_move(int B[][8], int current_R, int current_C)
       }
       else
 	     break;   
-   }
+   }*/
+
+   make_m_8(B, r_temp, c_temp, filler);
 }
 
 void make_m_1(int B[][8], int rT, int cT, int fil)
@@ -292,6 +294,19 @@ void make_m_7(int B[][8], int rT, int cT, int fil)
         cT--;
         B[rT][cT] = fil;
         make_m_7(B, rT, cT, fil);
+    }
+}
+
+void make_m_8(int B[][8], int rT, int cT, int fil)
+{
+    if ((rT - 1) < 0 || (cT + 1) >= 8)
+        return;
+    else
+    {
+        rT--;
+        cT++;
+        B[rT][cT] = fil;
+        make_m_8(B, rT, cT, fil);
     }
 }
 
