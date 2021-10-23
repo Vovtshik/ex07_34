@@ -2,7 +2,6 @@
 
 #include <iostream>
 using std::cout;
-//using std::cin;
 using std::endl;
 
 #include <cstdlib>
@@ -25,7 +24,7 @@ void make_m_5(int [][8], int, int, int);
 void make_m_6(int [][8], int, int, int);
 void make_m_7(int [][8], int, int, int);
 void make_m_8(int [][8], int, int, int);
-void show_board(int [][8]/*, int, int*/);
+void show_board(int [][8]);
 
 int main()
 {
@@ -33,11 +32,7 @@ int main()
    int move_r, move_c;
    int number_move = 0;
    int attempt_counter = 0;
-   int board[8][8] = {0};
-   //int start_r = rand() % 8;
-   //int start_c = rand() % 8;
-   //move_r = start_r;
-   //move_c = start_c;  
+   int board[8][8] = {0};  
    move_r = rand() % 8;
    move_c = rand() % 8;
 
@@ -61,7 +56,7 @@ int main()
       move_c = rand() % 8;
    }
 
-   show_board(board/*, start_r, start_c*/);
+   show_board(board);
 
    return 0;
 }
@@ -81,131 +76,39 @@ void make_move(int B[][8], int current_R, int current_C)
    int c_temp = current_C;
 
    make_m_1(B, r_temp, c_temp, filler);
-/*
-   while(true)
-   {
-      if((c_temp - 1) >= 0)
-      {
-         c_temp--;
-         B[r_temp][c_temp] = filler;
-      }
-      else
-	 break;
-   }
-*/
+
    r_temp = current_R;
    c_temp = current_C;
 
    make_m_2(B, r_temp, c_temp, filler);
-
-   /*while(true)
-   {
-      if((c_temp + 1) < 8)
-      {
-         c_temp++;
-	 B[r_temp][c_temp] = filler;
-      }
-      else
-         break;
-   }*/
 
    r_temp = current_R;
    c_temp = current_C;
 
    make_m_3(B, r_temp, c_temp, filler);
 
-  /* while(true)
-   {
-      if((r_temp - 1) >= 0)
-      {
-         r_temp--;
-	 B[r_temp][c_temp] = filler;
-      }
-      else
-         break;
-   }*/
-
    r_temp = current_R;
    c_temp = current_C;
 
    make_m_4(B, r_temp, c_temp, filler);
 
-   /*while(true)
-   {
-      if((r_temp + 1) < 8)
-      {
-         r_temp++;
-	 B[r_temp][c_temp] = filler;
-      }
-      else
-         break;
-   }*/
-
    r_temp = current_R;
    c_temp = current_C;
 
    make_m_5(B, r_temp, c_temp, filler);
-
-   /*while(true)
-   {
-      if((r_temp - 1) >= 0 && (c_temp - 1) >= 0)
-      {
-         r_temp--;
-         c_temp--;
-         B[r_temp][c_temp] = filler;
-      }
-      else
-         break;
-   }*/
    
    r_temp = current_R;
    c_temp = current_C;
-
-   /*while(true)
-   {
-      if((r_temp + 1) < 8 && (c_temp + 1) < 8)
-      {
-         r_temp++;
-	     c_temp++;
-	     B[r_temp][c_temp] = filler;
-      }
-      else
-	    break;
-   }*/
 
    make_m_6(B, r_temp, c_temp, filler);
    
    r_temp = current_R;
    c_temp = current_C;
 
-   /*while(true)
-   {
-      if((r_temp + 1) < 8 && (c_temp - 1) >= 0)
-      {
-         r_temp++;
-	     c_temp--;
-	     B[r_temp][c_temp] = filler;
-      }
-      else
-	    break;
-   }*/
-
    make_m_7(B, r_temp, c_temp, filler);
 
    r_temp = current_R;
    c_temp = current_C;
-
-   /*while(true)
-   {
-      if((r_temp - 1) >= 0 && (c_temp + 1) < 8)
-      {
-         r_temp--; 
-         c_temp++;
-	     B[r_temp][c_temp] = filler;
-      }
-      else
-	     break;   
-   }*/
 
    make_m_8(B, r_temp, c_temp, filler);
 }
@@ -310,7 +213,7 @@ void make_m_8(int B[][8], int rT, int cT, int fil)
     }
 }
 
-void show_board(int B[][8]/*, int sCR, int sCC*/)
+void show_board(int B[][8])
 {
    cout << "\n      0   1   2   3   4   5   6   7   \n" ;
    cout << "                                   \n";
